@@ -1,0 +1,28 @@
+{
+  "name": "github-board",
+  "version": "0.1.0",
+  "description": "Bring in one place all your GitHub work",
+  "main": "src/index.html",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/awerlang/github-board.git"
+  },
+  "keywords": [
+    "github",
+    "board",
+    "issues",
+    "kanbam"
+  ],
+  "author": "André Werlang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/awerlang/github-board/issues"
+  },
+  "homepage": "https://github.com/awerlang/github-board"
+}

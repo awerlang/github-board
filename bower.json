@@ -1,0 +1,28 @@
+{
+  "name": "github-board",
+  "version": "0.1.0",
+  "homepage": "https://github.com/awerlang/github-board",
+  "authors": [
+    "André Werlang <beppe85@gmail.com>"
+  ],
+  "description": "Bring in one place all your GitHub work",
+  "main": "src/index.html",
+  "keywords": [
+    "github",
+    "board",
+    "issues",
+    "kanbam"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.4.0-rc.2",
+    "angular-admin-lite": "https://github.com/awerlang/angular-admin-lite.git"
+  }
+}
