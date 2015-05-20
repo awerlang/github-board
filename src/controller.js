@@ -1,27 +1,12 @@
 function TestController(adminActions, adminMenu, adminUser) {
-    adminActions('message').add({
-        user: {
-            img: '../bower_components/admin-lte/dist/img/user2-160x160.jpg'
-        },
-        title: "Support Team",
-        message: "Why not buy a new awesome theme?",
-        timestamp: "5 mins"
-    });
-    
-    adminActions('notification').add({title: '5 new members joined today'});
-    
-    adminActions('task').add({
-        title: "Design some buttons",
-        percentComplete: 20
-    });
-    
-    adminMenu.addMenu('Link', function (item) { console.log(item.text);});
-    adminMenu.addMenu('Another link', function (item) { console.log(item.text);});
+    adminMenu.addMenu('Schedule', function (item) { console.log(item.text);});
+    adminMenu.addMenu('Repositories', function (item) { console.log(item.text);});
+    adminMenu.addMenu('Issues', function (item) { console.log(item.text);});
     
     adminUser.setCurrentUser({
-		img: '../bower_components/admin-lte/dist/img/user2-160x160.jpg',
-		name: 'Alexander Pierce',
-		role: 'Web Developer',
+		img: 'http://cssnerd.com/wp-content/plugins/better-github-widget/octocat.png',
+		name: 'Octocat',
+		role: 'Web Wanderer',
 		subtitle: 'Member since Nov. 2012',
         online: false,
         
@@ -34,7 +19,7 @@ function TestController(adminActions, adminMenu, adminUser) {
 	});
 }
 
-angular.module('app', ['wt.admin'])
+angular.module('app', ['wt.admin', 'app.dashboard'])
     .controller('AppController', TestController)
     .config(function($provide) {
         $provide.decorator('$templateRequest', function($delegate) {
