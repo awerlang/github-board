@@ -44,7 +44,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="../bower_components/angular-admin-lite/src/module.js"></script>
     <!-- app controllers -->
     <script src="controller.js"></script>
+    <script src="github/github.js"></script>
     <script src="main-page/controller.js"></script>
+    <script src="repositories/controller.js"></script>
+    <link rel="stylesheet" href="repositories/style.css"></script>
   </head>
   <!--
   BODY TAG OPTIONS:
@@ -66,7 +69,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   |               | sidebar-mini                            |
   |---------------------------------------------------------|
   -->
-  <body class="skin-blue sidebar-mini" ng-controller="AppController as ctrl">
+  <body class="skin-blue sidebar-mini" ng-controller="CockpitController as ctrl">
     <div class="wrapper">
 
       <!-- Main Header -->
@@ -109,7 +112,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </aside>
 
       <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper" gb-dashboard>
+      <div class="content-wrapper" ng-switch="ctrl.activeView">
+        <div ng-switch-when="gb-dashboard" gb-dashboard></div>
+        <div ng-switch-when="gb-repositories" gb-repositories></div>
       </div><!-- /.content-wrapper -->
 
       <!-- Main Footer -->

@@ -1,7 +1,14 @@
-function TestController(adminActions, adminMenu, adminUser) {
-    adminMenu.addMenu('Schedule', function (item) { console.log(item.text);});
-    adminMenu.addMenu('Repositories', function (item) { console.log(item.text);});
-    adminMenu.addMenu('Issues', function (item) { console.log(item.text);});
+function CockpitController(adminActions, adminMenu, adminUser) {
+    var self = this;
+    adminMenu.addMenu('Schedule', function (item) { 
+        self.activeView = "gb-schedule";
+    });
+    adminMenu.addMenu('Repositories', function (item) { 
+        self.activeView = "gb-repositories";
+    });
+    adminMenu.addMenu('Issues', function (item) { 
+        self.activeView = "gb-issues";
+    });
     
     adminUser.setCurrentUser({
 		img: 'http://cssnerd.com/wp-content/plugins/better-github-widget/octocat.png',
@@ -17,10 +24,12 @@ function TestController(adminActions, adminMenu, adminUser) {
             console.log('signout');
         }
 	});
+    
+    this.activeView = "gb-dashboard";
 }
 
-angular.module('app', ['wt.admin', 'app.dashboard'])
-    .controller('AppController', TestController)
+angular.module('app', ['wt.admin', 'app.dashboard', 'app.repositories'])
+    .controller('CockpitController', CockpitController)
     .config(function($provide) {
         $provide.decorator('$templateRequest', function($delegate) {
            return function (tpl, ignoreRequestError) {
