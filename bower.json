@@ -24,6 +24,7 @@
   "dependencies": {
     "angular": "1.4.0-rc.2",
     "angular-admin-lite": "https://github.com/awerlang/angular-admin-lite.git",
-    "angular-ui-calendar": "~1.0.0"
+    "angular-ui-calendar": "~1.0.0",
+    "octicons": "*"
   }
 }

@@ -21,8 +21,12 @@
                         <a ng-href="{{item.html_url}}" target="_blank">{{item.name}}</a>
                     </h3>
                     <div class="github-stats">
-                        <a class="repo-stargazers" target="_blank" href="{{item.stargazers_url}}">{{item.stargazers_count}}</a>
-                        <a class="repo-forks" target="_blank" href="{{forks_url}}">{{item.forks_count}}</a>
+                        <a class="repo-stargazers" target="_blank" href="{{item.stargazers_url}}">
+                            <span class="octicon octicon-star"></span> {{item.stargazers_count}}
+                        </a>
+                        <a class="repo-forks" target="_blank" href="{{forks_url}}">
+                            <span class="octicon octicon-repo-forked"></span> {{item.forks_count}}
+                        </a>
                     </div>
                 </div>
                 <div class="github-box-content">
@@ -35,7 +39,9 @@
                     <p class="repo-update">Latest commit:
                         <strong>{{item.pushed_at}}</strong>
                     </p>
-                    <a class="repo-download" ng-href="{{item.archive_url}}">Download as zip</a>
+                    <a class="repo-download" ng-href="{{item.archive_url}}">
+                        <span class="octicon octicon-cloud-download"></span>
+                    </a>
                 </div>
             </div>
         </div>
