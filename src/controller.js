@@ -1,13 +1,13 @@
-function CockpitController(adminActions, adminMenu, adminUser) {
+function CockpitController(adminActions, adminMenu, adminUser, activeView) {
     var self = this;
     adminMenu.addMenu('Schedule', function (item) { 
-        self.activeView = "gb-schedule";
+        activeView.setActiveView("gb-schedule");
     });
     adminMenu.addMenu('Repositories', function (item) { 
-        self.activeView = "gb-repositories";
+        activeView.setActiveView("gb-repositories");
     });
     adminMenu.addMenu('Issues', function (item) { 
-        self.activeView = "gb-issues";
+        activeView.setActiveView("gb-issues");
     });
     
     adminUser.setCurrentUser({
@@ -24,11 +24,14 @@ function CockpitController(adminActions, adminMenu, adminUser) {
             console.log('signout');
         }
 	});
+    self.getActiveView = function () {
+        return activeView.getActiveViewName();
+    };
     
-    this.activeView = "gb-dashboard";
+    activeView.setActiveView("gb-dashboard");
 }
 
-angular.module('app', ['wt.admin', 'app.dashboard', 'app.repositories'])
+angular.module('app', ['wt.admin', 'app.active-view', 'app.dashboard', 'app.repositories'])
     .controller('CockpitController', CockpitController)
     .config(function($provide) {
         $provide.decorator('$templateRequest', function($delegate) {

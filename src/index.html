@@ -47,6 +47,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- app controllers -->
     <script src="controller.js"></script>
     <script src="github/github.js"></script>
+    <script src="active-view/service.js"></script>
     <script src="main-page/controller.js"></script>
     <script src="repositories/controller.js"></script>
     <link rel="stylesheet" href="repositories/style.css"></script>
@@ -114,7 +115,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </aside>
 
       <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper" ng-switch="ctrl.activeView">
+      <div class="content-wrapper" ng-switch="ctrl.getActiveView()">
         <div ng-switch-when="gb-dashboard" gb-dashboard></div>
         <div ng-switch-when="gb-repositories" gb-repositories></div>
       </div><!-- /.content-wrapper -->
