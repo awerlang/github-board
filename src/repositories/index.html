@@ -18,7 +18,7 @@
             <div class="col-md-6 github-box" ng-repeat="item in ctrl.repositories">
                 <div class="github-box-header">
                     <h3>
-                        <a ng-href="{{item.html_url}}" target="_blank">{{item.name}}</a>
+                        <a href="" ng-click="ctrl.openRepository(item)">{{item.name}}</a>
                     </h3>
                     <div class="github-stats">
                         <a class="repo-stargazers" target="_blank" href="{{item.stargazers_url}}">
@@ -32,7 +32,7 @@
                 <div class="github-box-content">
                     <p>
                         <span>{{item.language}}</span>- {{item.description}} —
-                        <a target="_blank" ng-href="{{item.html_url}}">Read More</a>
+                        <a target="_blank" ng-href="{{item.html_url}}">Read More at GitHub</a>
                     </p>
                 </div>
                 <div class="github-box-download">

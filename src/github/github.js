@@ -5,6 +5,15 @@ function github($http) {
 		});
 	}
 	return function(owner, repository) {
+		function renderMarkdown(text) {
+			return $http.post('https://api.github.com/markdown/raw', text, {
+				headers: {
+					"Content-Type": "text/x-markdown"
+				}
+			}).then(function (data) {
+				return data.data;
+			});
+		}
 		function getRepositories() {
 			return api('/users/' + owner + '/repos');
 		}
@@ -17,6 +26,8 @@ function github($http) {
 		return {
 			owner: owner,
 			repository: repository,
+
+			renderMarkdown: renderMarkdown,
 			
 			getRepositories: getRepositories,
 			getMilestones: getMilestones,

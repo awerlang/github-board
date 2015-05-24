@@ -1,5 +1,5 @@
-angular.module('app.repositories', ['wt.admin', 'app.github'])
-    .directive('gbRepositories', function (githubDefault) {
+angular.module('app.repositories', ['ngSanitize', 'wt.admin', 'app.github', 'app.active-view'])
+    .directive('gbRepositories', function (githubDefault, activeView) {
     return {
         templateUrl: 'repositories/index.html',
         controllerAs: 'ctrl',
@@ -10,6 +10,9 @@ angular.module('app.repositories', ['wt.admin', 'app.github'])
             githubDefault.getRepositories().then(function (data) {
                 self.repositories = data;
             });
+            self.openRepository = function (item) {
+                activeView.setActiveView("gb-repository", item);
+            };
         }
     };
 });
