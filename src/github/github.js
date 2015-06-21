@@ -14,8 +14,9 @@ function github($http) {
 				return data.data;
 			});
 		}
-		function getRepositories() {
-			return api('/users/' + owner + '/repos');
+		function getRepositories(sort) {
+			var params = sort ? '?sort=' + sort : '';
+			return api('/users/' + owner + '/repos' + params);
 		}
 		function getIssues() {
 			return api('/repos/' + owner + '/' + repository + '/issues');

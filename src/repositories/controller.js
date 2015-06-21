@@ -7,7 +7,7 @@ angular.module('app.repositories', ['ngSanitize', 'wt.admin', 'app.github', 'app
             var self = this;
             
             self.userName = githubDefault.owner;
-            githubDefault.getRepositories().then(function (data) {
+            githubDefault.getRepositories('pushed').then(function (data) {
                 self.repositories = data;
             });
             self.openRepository = function (item) {
