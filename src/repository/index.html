@@ -91,8 +91,15 @@
                                 <dd>{{item.updated_at}}</dd>                                
                             </dl>
                         </div>                        
-                    </div>
-                </div>
-            </div>
+                    </div><!-- /.row -->
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+                    <span class="label" 
+                          style="color: white; margin-right: .6em; background-color: {{'#' + label.color}}" 
+                          ng-repeat="label in item.labels">
+                        {{label.name}}
+                    </span>
+                </div><!-- box-footer -->
+            </div><!-- /.box -->
         </div>
     </section><!-- /.content -->
