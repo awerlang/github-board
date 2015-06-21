@@ -15,11 +15,11 @@
     <section class="content">
 
         <!-- Your Page Content Here -->
-        <div class="row">
+        <div class="">
             <h3>{{ctrl.currentRepository.name}} <small>by {{ctrl.currentRepository.owner.login}}</small></h3>
             {{ctrl.currentRepository.description}}
         </div>
-        <div class="row">
+        <div class="">
             <h4>Milestones</h4>
             <div class="box" ng-repeat="item in ctrl.milestones">
                 <div class="box-header with-border">
@@ -33,7 +33,7 @@
                         <div class="progress-bar" style="width: {{item.open_issues * 100.0 / (item.open_issues + item.closed_issues)}}%"></div>
                     </div>
                     <div>
-                        <span>{{item.closed_issues * 100.0 / (item.open_issues + item.closed_issues)}}% complete</span> 
+                        <span>{{item.closed_issues * 100.0 / (item.open_issues + item.closed_issues) | number:2}}% complete</span> 
                         <span><strong>{{item.open_issues}}</strong> open</span> 
                         <span><strong>{{item.closed_issues}}</strong> closed</span>
                     </div>
@@ -45,42 +45,53 @@
                         </span>
                     </div>
                     
-                    <span ng-bind-html="item.description"></span>
+                    <div>
+                        <blockquote ng-bind-html="item.description"></blockquote>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="">
             <h4>Issues</h4>
             <div class="box" ng-repeat="item in ctrl.issues">
                 <div class="box-header with-border">
                     <h5>#{{item.number}} {{item.title}}</h5>
                     <div class="box-tools pull-right">
-                          <span class="label label-primary">Open</span>
+                        <span class="octicon octicon-comment"></span> {{item.comments}}
+                        <span class="label label-primary">Open</span>
                     </div>
                 </div>
                 <div class="box-body">
                     <dl>
-                        <dt>Assigned to</dt>
-                        <dd ng-if="item.assignee">
-                            <img ng-src="{{item.assignee.avatar.url + '&s=32'}}">
-                            {{item.assignee.login}}
-                        </dd>
-                        <dd ng-if="!item.assignee"><em>no one</em></dd>
-                        <dt>Milestone</dt>
-                        <dd ng-if="item.milestone">
-                            <span class="octicon octicon-milestone"></span>
-                            {{item.milestone.title}}
-                        </dd>
-                        <dd ng-if="!item.milestone">none</dd>
-                        <dt>Created at</dt>
-                        <dd>{{item.created_at}}</dd>
-                        <dt>Last updated</dt>
-                        <dd>{{item.updated_at}}</dd>
                         <dt>Description</dt>
-                        <dd>{{item.body}}</dd>
-                        <span class="octicon octicon-comment"></span> {{item.comments}}<br>
-                        See more at <a href="{{item.html_url}}">GitHub</a><br>
+                        <dd>{{item.body}} See more at <a href="{{item.html_url}}">GitHub</a></dd>
                     </dl>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <dl>
+                                <dt>Assigned to</dt>
+                                <dd ng-if="item.assignee">
+                                    <img ng-src="{{item.assignee.avatar.url + '&s=32'}}">
+                                    {{item.assignee.login}}
+                                </dd>
+                                <dd ng-if="!item.assignee"><em>no one</em></dd>
+                                <dt>Milestone</dt>
+                                <dd ng-if="item.milestone">
+                                    <span class="octicon octicon-milestone"></span>
+                                    {{item.milestone.title}}
+                                </dd>
+                                <dd ng-if="!item.milestone">none</dd>
+                            </dl>                            
+                        </div>
+                        <div class="col-xs-6">
+                            <dl>
+                                <dt>Created at</dt>
+                                <dd>{{item.created_at}}</dd>
+                                <dt>Last updated</dt>
+                                <dd>{{item.updated_at}}</dd>                                
+                            </dl>
+                        </div>                        
+                    </div>
                 </div>
             </div>
         </div>
