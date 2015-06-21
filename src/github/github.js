@@ -1,11 +1,24 @@
-function github($http) {
-	function api(url){
+var github_avoidRemote = true;
+function github($http, $q) {
+	function api(url) {
+		if (github_avoidRemote) {
+			var ghCache = localStorage.getItem(url);
+			if (ghCache) {
+				return $q.when(JSON.parse(ghCache));			
+			}
+		}
+		
 		return $http.get('https://api.github.com' + url).then(function (data) {
+			localStorage.setItem(url, JSON.stringify(data.data));
 			return data.data;
 		});
 	}
 	return function(owner, repository) {
 		function renderMarkdown(text) {
+			if (!text) return $q.when("");
+			
+			if (github_avoidRemote) return $q.when(text);
+			
 			return $http.post('https://api.github.com/markdown/raw', text, {
 				headers: {
 					"Content-Type": "text/x-markdown"
